@@ -109,10 +109,19 @@
           console.log('Making an Ajax call...');
           // Your Ajax call code here
         });
-
+class MyError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = '[custom]';
+  }
+ 
+  toString() {
+    return `[custom]: ${this.message}`;
+  }
+}
         document.getElementById('button1').addEventListener('click', function () {
-          console.log('Triggering JS error...');
-          throw new Error('This is a JavaScript error for testing purposes.');
+          console.log('function called')
+	        throw new MyError('cardStateType:account_restrictions_portsumTimeout,startTime:******,endTime:******,roundTripTime:10092|Account_Restrictions');
         });
 
         document.getElementById('button2').addEventListener('click', function () {
